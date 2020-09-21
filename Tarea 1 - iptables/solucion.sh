@@ -1,7 +1,7 @@
 	#!/bin/bash
 	############################################
 	#	Pontificia Universidad Javeriana Cali 	#
-	#	Inguieneria de Sistemas y Computacion 	#
+	#	Ingenieria de Sistemas y Computacion 	#
 	#	Seguridad Informatica				  	#
 	#	Estudiantes:						  	#
 	#		Santiago Florian Bustamante			#
