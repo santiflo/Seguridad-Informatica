@@ -10,9 +10,20 @@
 #	Tarea 2									#
  ###########################################
 
+######################################################################
 #	El siguiente sh contiene la solucion a la segunda terea de
 #	Seguridad Informatica, de realizar un ataque de ingeniería social 
 #	por medio de phishing.
+#
+#	Palablas clave: 
+#	-	SO: Sistema Operativo
+#	-	Backdoor: Puerta trasera, habilitar un puerto de la victima
+#				para acceder a funciones de su maquina si su permiso
+#	-	phishing: Pescar, accion de encontrar una victimia
+#	-	Ingieneria Social: La ingeniería social es la práctica de
+#				obtener información confidencial a través de la
+#				manipulación de usuarios legítimos.
+######################################################################
 
 ######################################################################
 #	En esta actividad se debe realizar un ataque de Ingeniería social
@@ -32,7 +43,10 @@
 #		Como crear un backdoor:
 #	Un Backdoor es un programa que abre un puerto en una maquina sin
 #	concentimiento del usuario para acceder a su sistema.
-#	Mediante el programa msfvenom se puede generar un backdoor para 
+#	Mediante el programa msfvenom se puede generar un backdoor llamado
+#	chrome.exe al igual que el navegador web google chrome.
+#	La idea es que este programa pase desapercivido por el usuario y su
+#	ejecucion sea igual a uno de los procesos naturales del SO. 
 #
 	LHOST=$(hostname -I)
 	LPORT=444
