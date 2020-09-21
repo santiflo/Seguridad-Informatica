@@ -1,7 +1,7 @@
 #!/bin/bash
  ###########################################
 #	Pontificia Universidad Javeriana Cali 	#
-#	Inguieneria de Sistemas y Computacion 	#
+#	Ingenieria de Sistemas y Computacion 	#
 #	Seguridad Informatica					#
 #	Estudiante:								#
 #		Santiago Florian Bustamante			#
@@ -20,7 +20,7 @@
 #	-	Backdoor: Puerta trasera, habilitar un puerto de la victima
 #				para acceder a funciones de su maquina si su permiso
 #	-	phishing: Pescar, accion de encontrar una victimia
-#	-	Ingieneria Social: La ingeniería social es la práctica de
+#	-	Ingenieria Social: La ingeniería social es la práctica de
 #				obtener información confidencial a través de la
 #				manipulación de usuarios legítimos.
 ######################################################################
